@@ -1,0 +1,43 @@
+appId: com.nooklabs.nook
+name: "06 - Focus Session"
+---
+- launchApp
+
+# Open focus mode
+- tapOn:
+    id: "focus-button"
+
+- assertVisible:
+    id: "focus-timer"
+- assertVisible:
+    id: "timer-display"
+
+# Select 15 minute preset
+- tapOn:
+    id: "preset-15"
+
+# Verify timer shows 15:00
+- assertVisible: "15:00"
+
+# Begin session
+- tapOn:
+    id: "focus-begin-button"
+
+# Plant growth should appear
+- assertVisible:
+    id: "plant-growth"
+
+# Wait a moment then cancel
+- waitForAnimationToEnd:
+    timeout: 2000
+
+- tapOn:
+    id: "focus-cancel-button"
+
+# Confirm cancel
+- assertVisible: "Your plant won't grow if you leave"
+- tapOn: "End session"
+
+# Back on room screen
+- assertVisible:
+    id: "room-scene"

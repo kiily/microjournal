@@ -1,0 +1,58 @@
+appId: com.nooklabs.nook
+name: "02 - Daily Check-in"
+---
+- launchApp
+
+# Room should be visible
+- assertVisible:
+    id: "room-scene"
+
+# Pull up the bottom sheet by swiping up from drag handle
+- swipeOn:
+    id: "drag-handle"
+    direction: UP
+    duration: 500
+
+- assertVisible:
+    id: "check-in-sheet"
+
+# Select mood
+- tapOn:
+    id: "mood-option-3"
+
+# Select mood tags
+- tapOn:
+    id: "mood-tag-calm"
+- tapOn:
+    id: "mood-tag-grateful"
+
+# Complete a habit
+- tapOn:
+    id: "habit-toggle-template-read-chapter"
+
+# Add a note
+- tapOn:
+    id: "note-input"
+- inputText: "Good day, feeling grounded."
+
+# Dismiss keyboard
+- pressKey: BACK
+
+# Swipe sheet down
+- swipeOn:
+    id: "drag-handle"
+    direction: DOWN
+    duration: 300
+
+# Restart app — entry should persist
+- stopApp
+- launchApp
+
+- swipeOn:
+    id: "drag-handle"
+    direction: UP
+    duration: 500
+
+# Verify mood is still selected
+- assertVisible:
+    id: "mood-option-3"
