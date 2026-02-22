@@ -1,0 +1,32 @@
+appId: com.nooklabs.nook
+name: "04 - Room Interaction"
+---
+- launchApp
+
+# Verify room is present
+- assertVisible:
+    id: "room-scene"
+
+# Tap avatar
+- tapOn:
+    id: "room-avatar"
+
+# Bottom sheet should peek up
+- assertVisible:
+    id: "drag-handle"
+
+# If any room items exist, tap one
+# (Items may not exist on fresh install — this is a best-effort check)
+- runFlow:
+    when:
+      visible:
+        testId: "room-item-*"
+    flow:
+      - tapOn:
+          id: "room-item-*"
+      - assertVisible:
+          id: "item-info-card"
+      - tapOn:
+          id: "item-info-close"
+      - assertNotVisible:
+          id: "item-info-card"

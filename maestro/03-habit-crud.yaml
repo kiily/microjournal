@@ -1,0 +1,65 @@
+appId: com.nooklabs.nook
+name: "03 - Habit CRUD"
+---
+- launchApp
+
+# Pull up bottom sheet
+- swipeOn:
+    id: "drag-handle"
+    direction: UP
+    duration: 500
+
+# Add new habit
+- tapOn:
+    id: "add-habit-button"
+
+# Fill the form
+- assertVisible:
+    id: "habit-form"
+- tapOn:
+    id: "habit-name-input"
+- inputText: "Journal every morning"
+
+- tapOn:
+    id: "category-option-rest"
+
+- tapOn:
+    id: "icon-option-moon"
+
+- tapOn:
+    id: "habit-form-submit"
+
+# Back on main screen, verify habit appears
+- swipeOn:
+    id: "drag-handle"
+    direction: UP
+    duration: 500
+- assertVisible: "Journal every morning"
+
+# Complete the habit
+- tapOn: "Journal every morning"
+
+# Long press to edit
+- longPressOn: "Journal every morning"
+
+# Should navigate to edit screen
+- assertVisible:
+    id: "habit-form"
+
+# Cancel edit
+- tapOn:
+    id: "habit-form-cancel"
+
+# Open manage habits
+- tapOn:
+    id: "manage-habits-button"
+- assertVisible:
+    id: "manage-habits-list"
+
+# Archive the new habit
+- tapOn:
+    text: "Journal every morning"
+    index: 1
+
+# Verify it's no longer in the list
+- assertNotVisible: "Journal every morning"

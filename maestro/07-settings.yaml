@@ -1,0 +1,46 @@
+appId: com.nooklabs.nook
+name: "07 - Settings"
+---
+- launchApp
+
+# Open settings
+- tapOn:
+    id: "settings-button"
+
+- assertVisible: "Settings"
+
+# Change display name
+- tapOn:
+    id: "settings-name-input"
+- clearText
+- inputText: "Maya"
+- pressKey: BACK
+
+# Navigate to reminders
+- tapOn:
+    id: "settings-reminders-button"
+- assertVisible: "Reminders"
+- tapOn:
+    id: "reminder-toggle"
+
+# Go back
+- pressKey: BACK
+
+# Navigate to privacy
+- tapOn: "Privacy"
+
+- assertVisible: "Privacy"
+- tapOn:
+    id: "export-data-button"
+
+# Verify export dialog
+- assertVisible: "Export ready"
+- tapOn: "OK"
+
+# Go back to room
+- pressKey: BACK
+- pressKey: BACK
+
+- assertVisible:
+    id: "room-scene"
+- assertVisible: "Maya"

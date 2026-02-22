@@ -1,0 +1,33 @@
+appId: com.nooklabs.nook
+name: "05 - Journal Navigation"
+---
+- launchApp
+
+# Swipe left on room to go to journal
+- swipeOn:
+    id: "room-scene"
+    direction: LEFT
+    duration: 400
+
+- assertVisible:
+    id: "journal-list"
+- assertVisible:
+    id: "calendar-grid"
+
+# Tap Year in Pixels link
+- tapOn:
+    id: "year-pixels-link"
+- assertVisible:
+    id: "year-pixels"
+
+# Go back
+- tapOn:
+    id: "year-pixels-back"
+- assertVisible:
+    id: "journal-list"
+
+# Go back to room
+- tapOn:
+    id: "journal-back-button"
+- assertVisible:
+    id: "room-scene"

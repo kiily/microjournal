@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Nook",
+    "slug": "nook",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FAF6F1"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.nooklabs.nook",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Nook uses the microphone for focus session ambient recording (optional).",
+        "UIBackgroundModes": ["audio"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FAF6F1"
+      },
+      "package": "com.nooklabs.nook",
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#D4845A"
+        }
+      ],
+      "expo-font",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow Nook to access your microphone."
+        }
+      ]
+    ],
+    "scheme": "nook",
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+appId: com.nooklabs.nook
+name: "01 - Onboarding Flow"
+---
+# Launch the app fresh
+- launchApp:
+    clearState: true
+
+# Step 1: Room appears - wait for the room scene
+- waitForAnimationToEnd:
+    timeout: 5000
+
+# The overlay text should appear after 2 seconds
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Step 2: Name entry
+- assertVisible: "What should we call you?"
+- tapOn:
+    id: "onboarding-name-input"
+- inputText: "Maya"
+- tapOn:
+    id: "onboarding-continue-button"
+
+# Step 3: Mood selection
+- assertVisible: "Your room reflects how you feel."
+- tapOn:
+    id: "mood-option-4"
+
+# Step 4: Habits — template habits are shown
+- assertVisible: "Here are some habits to start with."
+
+# Step 5: Complete one habit
+- tapOn:
+    id: "habit-toggle-template-morning-stretch"
+
+# Step 6: Done
+- waitForAnimationToEnd
+- tapOn:
+    id: "onboarding-done-button"
+
+# Should be on the room screen now
+- assertVisible:
+    id: "room-scene"
+- assertVisible:
+    id: "greeting-bar"
